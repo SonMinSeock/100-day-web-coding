@@ -1,6 +1,7 @@
 ol {
   list-style: none;
+  /* color: rgb(251, 255, 0); */
 }
-/* li {
-  list-style: none;
-} */
+li {
+  color: rgb(2, green, blue);
+}
