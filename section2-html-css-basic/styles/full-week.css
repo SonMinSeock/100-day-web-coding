@@ -4,6 +4,16 @@ h1 {
   margin: 12px 0;
 }
 
+/* id 선택자 */
+/* #description {
+  margin-bottom: 36px;
+} */
+
+/*자손 결합자*/
+header p {
+  margin-bottom: 36px;
+}
+
 a {
   padding: 12px 48px;
   background-color: rgb(167, 1, 78);
@@ -30,4 +40,14 @@ li {
   border-radius: 6px;
   margin: 32px;
   padding: 16px;
+}
+
+h2 {
+  font-family: "Oswald", sans-serif;
+  color: rgb(78, 13, 5);
+}
+
+main p {
+  margin: 12px;
+  color: rgb(71, 29, 22);
 }
