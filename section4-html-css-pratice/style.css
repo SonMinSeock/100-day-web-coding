@@ -51,15 +51,26 @@ a {
   border-radius: 4px;
 }
 
+a:hover,
+a:active {
+  background-color: rgb(250, 201, 39);
+}
+
 footer {
   margin-bottom: 100px;
 }
 
 footer a {
+  display: inline-block;
   background-color: rgb(250, 201, 39);
   padding: 12px 20px;
   border-radius: 8px;
   color: rgb(66, 51, 4);
+}
+
+footer a:hover,
+footer a:active {
+  background-color: rgb(255, 186, 58);
 }
 
 footer p {
