@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+header {
+  padding: 32px;
+}
+
 header,
 footer {
   text-align: center;
