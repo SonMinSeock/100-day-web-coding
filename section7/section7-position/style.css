@@ -15,7 +15,7 @@ html {
 } */
 #container {
   background-color: #521751;
-  position: relative;
+  /* position: relative; */
 }
 
 #container p {
@@ -36,11 +36,16 @@ html {
   /* left: 20px; */
   /* right: 20px; */
 
-  /* position: absolute; */
-  /* top: 0px; */
-
-  position: fixed;
+  position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 10px solid black;
+  margin: 10px;
+
+  /* position: fixed;
+  top: 0; */
 }
 
 #three {
