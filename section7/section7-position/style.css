@@ -9,9 +9,13 @@ p {
   padding: 50px;
   margin: 0;
 }
-
+/* 
+html {
+  margin: 20px;
+} */
 #container {
   background-color: #521751;
+  position: relative;
 }
 
 #container p {
@@ -24,12 +28,19 @@ p {
 
 #two {
   background-color: #c95bc7;
-  position: relative;
-  top: 20px;
+
+  /* position: relative; */
+  /* top: 20px; */
   /* top: -20px; */
   /* bottom: 20px; */
   /* left: 20px; */
   /* right: 20px; */
+
+  /* position: absolute; */
+  /* top: 0px; */
+
+  position: fixed;
+  top: 0;
 }
 
 #three {
