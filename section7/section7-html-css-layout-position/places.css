@@ -8,8 +8,11 @@ header {
 }
 
 main ul {
-  width: 1500px;
-  margin: 0 auto;
+  width: 1200px;
+  margin: 0 auto 48px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
 main ul li {
@@ -18,13 +21,17 @@ main ul li {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   overflow: hidden;
-  width: 500px;
+  /* width: 500px; */
 }
 
 main ul li img {
   width: 300px;
   height: 280px;
   object-fit: cover;
+}
+
+main ul li:nth-of-type(3) {
+  grid-column: 1 / span 2;
 }
 
 .item-content {
