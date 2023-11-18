@@ -1,0 +1,32 @@
+#main-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(29, 26, 24);
+  padding: 0 20px;
+}
+
+#logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(238, 164, 80);
+  text-transform: uppercase;
+}
+
+#main-header nav ul {
+  display: flex;
+}
+
+#main-header nav ul li {
+  margin: 0 16px;
+}
+
+#main-header nav ul li a {
+  color: rgb(185, 131, 31);
+  font-size: 20px;
+}
+
+#main-header nav ul li a:hover {
+  color: rgb(228, 163, 44);
+}
