@@ -86,3 +86,9 @@ main h1 {
 .food-item .food-item-content .btn:hover {
   background-color: rgb(221, 134, 34);
 }
+
+@media (max-width: 768px) {
+  #latest-products ul {
+    grid-template-columns: 100%;
+  }
+}
