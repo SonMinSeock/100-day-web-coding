@@ -19,7 +19,7 @@
 .menu-btn {
   width: 3rem;
   height: 3rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -148,6 +148,10 @@ main h1 {
 @media (max-width: 48rem) {
   #main-header nav {
     display: none;
+  }
+
+  .menu-btn {
+    display: flex;
   }
 
   main h1 {
