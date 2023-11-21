@@ -63,6 +63,15 @@
   display: block;
 }
 
+#side-drawer header {
+  height: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgb(29, 26, 24);
+  padding: 0 5%;
+}
+
 #side-drawer nav ul {
   display: flex;
   flex-direction: column;
@@ -120,6 +129,11 @@ main h1 {
   padding: 1rem;
 }
 
+.food-item .food-item-content h2 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+}
+
 .food-item .food-item-content .btn {
   background-color: rgb(228, 157, 44);
   color: white;
@@ -142,5 +156,13 @@ main h1 {
 
   #latest-products ul {
     grid-template-columns: 100%;
+  }
+
+  .food-item .food-item-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .food-item .food-item-content a {
+    font-size: 1.5rem;
   }
 }
