@@ -49,6 +49,10 @@ select {
   outline: none;
 }
 
+textarea {
+  resize: both;
+}
+
 .form-control-inline {
   display: flex;
 }
