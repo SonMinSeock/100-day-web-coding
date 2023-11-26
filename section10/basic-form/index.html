@@ -20,15 +20,15 @@
           <ul>
             <li>
               <label for="user-name">Your name</label>
-              <input type="text" name="username" id="user-name" />
+              <input type="text" name="username" id="user-name" required />
             </li>
             <li>
               <label for="user-email">Your email Address</label>
-              <input type="email" name="email" id="user-email" />
+              <input type="email" name="email" id="user-email" required />
             </li>
             <li>
               <label for="user-password">Your password</label>
-              <input type="password" name="user-password" id="user-password" />
+              <input type="password" name="user-password" id="user-password" required minlength="7" />
             </li>
           </ul>
         </section>
@@ -38,11 +38,11 @@
           <ul>
             <li>
               <label for="user-age">Your age</label>
-              <input type="number" step="1" name="user-age" id="user-age" />
+              <input type="number" step="1" name="user-age" id="user-age" required min="18" max="100" />
             </li>
             <li>
               <label for="user-birthdate">Your Birthdate</label>
-              <input type="date" name="user-birthdate" id="user-birthdate" />
+              <input type="date" name="user-birthdate" id="user-birthdate" required min="1921-01-01" max="2023-11-27" />
             </li>
             <li>
               <label for="favorite-color">Your favorite color?</label>
@@ -64,15 +64,15 @@
           <h2>How should we verify your account?</h2>
           <ul>
             <li class="form-control-inline">
-              <input type="radio" name="verfiy" id="verfiy-text-message" value="text-message" />
+              <input type="radio" name="verfiy" id="verfiy-text-message" value="text-message" required />
               <label for="verfiy-text-message">Via text message (SMS)</label>
             </li>
             <li class="form-control-inline">
-              <input type="radio" name="verfiy" id="verfiy-phone" value="phone" />
+              <input type="radio" name="verfiy" id="verfiy-phone" value="phone" required />
               <label for="verfiy-phone">Via a phone cell</label>
             </li>
             <li class="form-control-inline">
-              <input type="radio" name="verfiy" id="verfiy-email" value="email" />
+              <input type="radio" name="verfiy" id="verfiy-email" value="email" required />
               <label for="verfiy-email">Via an email</label>
             </li>
           </ul>
