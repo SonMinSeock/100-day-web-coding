@@ -8,12 +8,7 @@ console.log(10 + (3 - 5) * 10);
 
 let result = (10 + 3 - 5) * 10;
 
-//result = result + 1;
-//result++;
-//result--;
-// console.log(result);
-result += 5;
-result -= 5;
-result /= 5;
-result *= 5;
-console.log(result);
+console.log("Son" + " " + "MinSeock");
+console.log("Son" + " MinSeock");
+
+console.log("Son" - " MinSeock");
