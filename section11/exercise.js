@@ -30,7 +30,7 @@ alert(onlineCourse.goals);
 
 // 4) Also output the second element in your "main goals" variable
 
-alert(onlineCourse.goals[1]);
+alert(onlineCourse.goals[0]);
 
 // 5) Add a custom command that does the following:
 //    - Use your "main goals" variable and access an element by its identifier
@@ -45,5 +45,5 @@ function getListItem(array, index) {
 }
 
 // 6) Execute your custom command from (5) and output ("alert") the result
-let firstGoal = getListItem(onlineCourse.goals, 1);
+let firstGoal = getListItem(onlineCourse.goals, 0);
 alert(firstGoal);

@@ -17,3 +17,12 @@ userAge = 35;
 totalAdultYears = calculateAdultYears(userAge);
 
 alert(totalAdultYears);
+
+let person = {
+  name: "Son MinSeock",
+  greeting() {
+    alert("Hello");
+  },
+};
+
+person.greeting();
