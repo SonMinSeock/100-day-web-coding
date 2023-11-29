@@ -11,17 +11,17 @@ function calculateAdultYears(userAge) {
 }
 
 totalAdultYears = calculateAdultYears(userAge);
-alert(totalAdultYears);
+console.log(totalAdultYears);
 
 userAge = 35;
 totalAdultYears = calculateAdultYears(userAge);
 
-alert(totalAdultYears);
+console.log(totalAdultYears);
 
 let person = {
   name: "Son MinSeock",
   greeting() {
-    alert("Hello");
+    console.log("Hello");
   },
 };
 
