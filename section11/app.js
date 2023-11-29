@@ -6,7 +6,8 @@ let job = { title: "Developer", place: "Seoul", salary: 52000 };
 
 let totalAdultYears;
 function calculateAdultYears(userAge) {
-  return userAge - 18;
+  let result = userAge - 18;
+  return result;
 }
 
 totalAdultYears = calculateAdultYears(userAge);
