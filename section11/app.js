@@ -5,5 +5,8 @@ let hobbies = ["Socker", "Cooking", "Music"];
 let job = { title: "Developer", place: "Seoul", salary: 52000 };
 
 let adultYears = userAge - 18;
+alert(adultYears);
 
+userAge = 35;
+adultYears = userAge - 18;
 alert(adultYears);
