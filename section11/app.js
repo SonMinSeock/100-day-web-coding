@@ -4,16 +4,15 @@ let hobbies = ["Socker", "Cooking", "Music"];
 
 let job = { title: "Developer", place: "Seoul", salary: 52000 };
 
-let adultYears;
-
+let totalAdultYears;
 function calculateAdultYears() {
-  adultYears = userAge - 18;
+  return userAge - 18;
 }
 
-calculateAdultYears();
-alert(adultYears);
+totalAdultYears = calculateAdultYears();
+alert(totalAdultYears);
 
 userAge = 35;
-calculateAdultYears();
+totalAdultYears = calculateAdultYears();
 
-alert(adultYears);
+alert(totalAdultYears);
