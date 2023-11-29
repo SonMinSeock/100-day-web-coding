@@ -4,5 +4,6 @@ let hobbies = ["Socker", "Cooking", "Music"];
 
 let job = { title: "Developer", place: "Seoul", salary: 52000 };
 
-alert(hobbies[1]);
-alert(job.place);
+let adultYears = userAge - 18;
+
+alert(adultYears);
