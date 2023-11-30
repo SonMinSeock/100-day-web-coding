@@ -18,3 +18,7 @@ console.log("2" * 3);
 let userName = "SonMinSeock";
 console.log(userName.length);
 console.log(userName.toUpperCase());
+
+let hobbies = ["Sports", "Game"];
+
+console.log(hobbies.length);
