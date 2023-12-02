@@ -4,3 +4,8 @@
 // DOM으로 요소를 접근 하는방법. 2) 쿼리 메서스 방법.
 let aElement = document.getElementById("external-link");
 aElement.href = "https://google.com";
+
+//aElement = document.querySelector("#external-link");
+aElement = document.querySelector("p a");
+//console.dir(document.querySelectorAll("a"));
+aElement.href = "https://naver.com";
