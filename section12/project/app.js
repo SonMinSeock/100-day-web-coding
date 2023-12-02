@@ -9,3 +9,14 @@ aElement.href = "https://google.com";
 aElement = document.querySelector("p a");
 //console.dir(document.querySelectorAll("a"));
 aElement.href = "https://naver.com";
+
+//1. Create the New Element.
+let newAnchorElement = document.createElement("a");
+newAnchorElement.href = "https://google.com";
+newAnchorElement.textContent = "This is leads to Google!";
+
+//2. Get Access to the Parent Element that should hold the new Element.
+let firstParagraph = document.querySelector("p");
+
+//3. Insert The new Element into the parent Element Content.
+firstParagraph.append(newAnchorElement);
