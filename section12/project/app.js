@@ -24,4 +24,5 @@ firstParagraph.append(newAnchorElement);
 // Remove Element
 let firstH1Element = document.querySelector("h1");
 //firstH1Element.remove();
+
 firstH1Element.parentElement.removeChild(firstH1Element);
