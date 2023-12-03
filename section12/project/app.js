@@ -20,3 +20,8 @@ let firstParagraph = document.querySelector("p");
 
 //3. Insert The new Element into the parent Element Content.
 firstParagraph.append(newAnchorElement);
+
+// Remove Element
+let firstH1Element = document.querySelector("h1");
+//firstH1Element.remove();
+firstH1Element.parentElement.removeChild(firstH1Element);
