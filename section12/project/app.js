@@ -28,3 +28,5 @@ let firstH1Element = document.querySelector("h1");
 firstH1Element.parentElement.removeChild(firstH1Element);
 
 firstParagraph.parentElement.append(firstParagraph);
+
+firstParagraph.innerHTML = "Hi This is <strong>important!</strong>";
