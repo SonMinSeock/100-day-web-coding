@@ -3,12 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanted JavaScript</title>
+    <title>Demo DOM</title>
+    <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
-    <!-- <script src="/exercise.js" defer></script> -->
   </head>
   <body>
-    <p>Click Me!</p>
-    <input type="text" />
+    <form>
+      <section class="control">
+        <label for="product-name">Product Name</label>
+        <input type="text" id="product-name" name="product-name" maxlength="60" />
+        <span id="charcount"> <span id="remaining-chars">60</span>/60 </span>
+      </section>
+      <button>Submit</button>
+    </form>
   </body>
 </html>

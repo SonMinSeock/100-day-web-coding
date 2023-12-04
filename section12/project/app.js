@@ -1,17 +1,14 @@
-let paragrapElement = document.querySelector("p");
-let inputElement = document.querySelector("input");
+let remainingChars = document.querySelector("#remaining-chars");
+let productNameInput = document.querySelector("#product-name");
+let productNameInputMaxLength = productNameInput.maxLength;
 
-function changePragraphText(event) {
-  paragrapElement.textContent = "Clicked!";
-  console.log("paragraph clicked!!");
-  console.log(event);
-}
-function enteredTextHandler(event) {
-  //let enteredText = inputElement.value;
+console.dir(productNameInput);
+
+function remainCharsCountUpdate(event) {
   let enteredText = event.target.value;
-  //let enteredText = event.data;
-  console.dir(enteredText);
+  let enteredTextLength = enteredText.length;
+
+  remainingChars.textContent = productNameInputMaxLength - enteredTextLength;
 }
 
-paragrapElement.addEventListener("click", changePragraphText);
-inputElement.addEventListener("input", enteredTextHandler);
+productNameInput.addEventListener("input", remainCharsCountUpdate);
