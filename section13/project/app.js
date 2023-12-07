@@ -9,9 +9,17 @@ function remainCharsCountUpdate(event) {
   const currentWriteTextLength = productNameInputMaxLength - enteredTextLength;
   remainingChars.textContent = currentWriteTextLength;
 
-  if (currentWriteTextLength <= 10) {
+  if (currentWriteTextLength === 0) {
+    productNameInput.classList.add("error");
+    remainingChars.classList.add("error");
+  } else if (currentWriteTextLength <= 10) {
     productNameInput.classList.add("warning");
     remainingChars.classList.add("warning");
+    productNameInput.classList.remove("error");
+    remainingChars.classList.remove("error");
+  } else {
+    productNameInput.classList.remove("warning");
+    remainingChars.classList.remove("warning");
   }
 }
 
