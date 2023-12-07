@@ -21,3 +21,9 @@ let isLoggedIn = false;
 if (!isLoggedIn) {
   console.log("User is NOT Logged In!");
 }
+
+let enteredName = "";
+
+if (enteredName) {
+  console.log("Input is Valid!");
+}
