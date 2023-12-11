@@ -18,9 +18,12 @@ const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");
 const formElement = document.querySelector("form");
 const errorOutputElement = document.getElementById("config-errors");
+const startNewGameBtnElement = document.getElementById("start-game-btn");
+const gameAreaElement = document.getElementById("active-game");
 
 editPlayer1BtnElement.addEventListener("click", openPlayerConfig);
 editPlayer2BtnElement.addEventListener("click", openPlayerConfig);
 cancleConfigBtnElement.addEventListener("click", closePlayerConfig);
 backdropElement.addEventListener("click", closePlayerConfig);
 formElement.addEventListener("submit", savePlayerConfig);
+startNewGameBtnElement.addEventListener("click", startNewGame);
