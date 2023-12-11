@@ -27,10 +27,11 @@
         <form>
           <section class="form-control">
             <label for="player-name">Player Name</label>
-            <input type="text" name="playername" id="playername" />
+            <input type="text" name="playername" id="playername" required />
           </section>
+          <p id="config-errors"></p>
           <section class="form-control">
-            <button type="button" class="btn btn-alt" id="cancle-config-btn">Cancel</button>
+            <button type="reset" class="btn btn-alt" id="cancle-config-btn">Cancel</button>
             <button type="submit" class="btn">Confirm</button>
           </section>
         </form>
