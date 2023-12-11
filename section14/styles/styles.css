@@ -5,6 +5,13 @@ body {
   background-color: rgb(247, 239, 247);
 }
 
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #main-header {
   background-color: rgb(140, 0, 255);
   color: white;
