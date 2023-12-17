@@ -1,0 +1,14 @@
+{
+  "name": "section17",
+  "version": "1.0.0",
+  "description": "Learning NPM & Express Learning",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Son MinSeock",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
