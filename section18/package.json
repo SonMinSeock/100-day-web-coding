@@ -1,17 +1,17 @@
 {
   "name": "section18",
   "version": "1.0.0",
-  "description": "Learning Express & EJS Template",
+  "description": "Learning Express & EJS",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Son MinSeock",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^2.0.7"
   }
 }
