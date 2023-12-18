@@ -1,0 +1,17 @@
+{
+  "name": "section18",
+  "version": "1.0.0",
+  "description": "Learning Express & EJS Template",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Son MinSeock",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
