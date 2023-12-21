@@ -1,0 +1,23 @@
+[
+  {
+    "name": "TEST",
+    "address": "Test City",
+    "cuisine": "Italian",
+    "website": "https://mytest.com",
+    "description": "It's Awesome!"
+  },
+  {
+    "name": "아웃백스테이크하우스 가산점",
+    "address": "서울특별시 금천구 서울 금천구 디지털로10길 9 ",
+    "cuisine": "패밀리 레스토랑",
+    "website": "https://map.naver.com/p/entry/place/34413398?lng=126.8891282&lat=37.47759969999999&placePath=%2Fhome&entry=plt&searchType=place&c=14.51,0,0,0,dh",
+    "description": "풍부한 셀러드 바, 스테이크 퀄리티 좋습니다!"
+  },
+  {
+    "name": "애슐리퀸즈 부천뉴코아점",
+    "address": "경기도 부천시 송내대로 239",
+    "cuisine": "패밀리 레스토랑",
+    "website": "https://map.naver.com/p/search/%EC%95%A0%EC%8A%90%EB%A6%AC%20%ED%80%B8%EC%A6%88%20%EB%B6%80%EC%B2%9C/place/13336269?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=11.00,0,0,0,dh",
+    "description": "연말연시 가족과 함께하기 좋은곳!"
+  }
+]
