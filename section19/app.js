@@ -35,6 +35,8 @@ app.get("/restaurants/:id", function (req, res) {
       res.render("restaurant-detail", { restaurant });
     }
   }
+
+  res.render("404");
 });
 
 app.get("/confirm", function (req, res) {
