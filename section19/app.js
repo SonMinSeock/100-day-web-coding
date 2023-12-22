@@ -30,15 +30,11 @@ app.get("/restaurants/:id", function (req, res) {
   const fileData = fs.readFileSync(filePath);
   const storedRestaurants = JSON.parse(fileData);
 
-  let responseRestaurant;
-
   for (const restaurant of storedRestaurants) {
     if (restaurant.id === restaurantId) {
-      responseRestaurant = restaurant;
+      res.render("restaurant-detail", { restaurant });
     }
   }
-
-  res.render("restaurant-detail", { restaurant: responseRestaurant });
 });
 
 app.get("/confirm", function (req, res) {
