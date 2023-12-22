@@ -66,6 +66,10 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
+app.use(function (req, res) {
+  res.render("404");
+});
+
 app.listen(3000, function () {
   console.log("Server Listen on PORT : 3000");
 });
