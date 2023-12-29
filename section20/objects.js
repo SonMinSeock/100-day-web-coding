@@ -18,6 +18,9 @@ class Job {
     this.place = place;
     this.salary = salary;
   }
+  describe() {
+    console.log(`I'm a ${this.title}, I work in ${this.place} and I earn ${this.salary}`);
+  }
 }
 
 const frontEndDeveloper = new Job("Frontend Developer", "강남", 5500);
@@ -25,3 +28,5 @@ const backEndDeveloper = new Job("Backend Developer", "성남", 6500);
 
 console.log(frontEndDeveloper);
 console.log(backEndDeveloper);
+frontEndDeveloper.describe();
+backEndDeveloper.describe();
