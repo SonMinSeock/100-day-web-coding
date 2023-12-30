@@ -15,10 +15,14 @@ function readFile() {
   */
 
   // 프로미스
-  fs.readFile("data.txt").then(function (fileData) {
-    console.log("File parsing Done!");
-    console.log(fileData.toString());
-  });
+  fs.readFile("dat.txt")
+    .then(function (fileData) {
+      console.log("File parsing Done!");
+      console.log(fileData.toString());
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   console.log("Hello there!");
 }
