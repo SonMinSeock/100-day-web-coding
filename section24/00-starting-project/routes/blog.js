@@ -45,7 +45,18 @@ router.get("/posts/:id", async function (req, res) {
     return res.status(404).render("404");
   }
 
-  res.render("post-detail", { post: posts[0] });
+  const postData = {
+    ...posts[0],
+    date: posts[0].date.toISOString(),
+    humanReadableDate: posts[0].date.toLocaleString("ko-KR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  };
+
+  res.render("post-detail", { post: postData });
 });
 
 module.exports = router;
