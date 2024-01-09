@@ -17,7 +17,6 @@ router.get("/posts", async function (req, res) {
     .project({ title: 1, summary: 1, "author.name": 1 })
     .toArray();
 
-  console.log(posts);
   res.render("posts-list", { posts: posts });
 });
 
@@ -72,6 +71,30 @@ router.get("/posts/:id", async function (req, res) {
   }
 
   res.render("post-detail", { post: postData });
+});
+
+router.get("/posts/:id/edit", async function (req, res) {
+  const { id } = req.params;
+  const postId = new ObjectId(id);
+
+  const post = await db.getDb().collection("posts").findOne({ _id: postId });
+
+  if (!post) {
+    return res.status(404).render("404");
+  }
+
+  res.render("update-post", { post: post });
+});
+
+router.post("/posts/:id/edit", async function (req, res) {
+  const { id } = req.params;
+  const postId = new ObjectId(id);
+
+  const updatePost = { ...req.body, body: req.body.content, date: new Date() };
+
+  await db.getDb().collection("posts").updateOne({ _id: postId }, { $set: updatePost });
+
+  res.redirect("/posts");
 });
 
 module.exports = router;
