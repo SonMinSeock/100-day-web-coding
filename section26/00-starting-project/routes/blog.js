@@ -39,7 +39,7 @@ router.post("/posts", async function (req, res) {
   };
 
   const result = await db.getDb().collection("posts").insertOne(newPost);
-  console.log(result);
+
   res.redirect("/posts");
 });
 
@@ -47,6 +47,20 @@ router.get("/new-post", async function (req, res) {
   const authors = await db.getDb().collection("authors").find().toArray();
 
   res.render("create-post", { authors: authors });
+});
+
+router.get("/posts/:id", async function (req, res) {
+  const { id } = req.params;
+
+  const postId = new ObjectId(id);
+
+  const post = await db.getDb().collection("posts").findOne({ _id: postId });
+
+  if (!post) {
+    return res.status(404).render("404");
+  }
+
+  res.render("post-detail", { post: post });
 });
 
 module.exports = router;
