@@ -56,11 +56,22 @@ router.get("/posts/:id", async function (req, res) {
 
   const post = await db.getDb().collection("posts").findOne({ _id: postId });
 
+  const postData = {
+    ...post,
+    date: post.date.toISOString(),
+    humanReadableDate: post.date.toLocaleString("ko-KR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  };
+
   if (!post) {
     return res.status(404).render("404");
   }
 
-  res.render("post-detail", { post: post });
+  res.render("post-detail", { post: postData });
 });
 
 module.exports = router;
