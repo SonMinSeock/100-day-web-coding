@@ -48,10 +48,16 @@ router.get("/new-post", async function (req, res) {
   res.render("create-post", { authors: authors });
 });
 
-router.get("/posts/:id", async function (req, res) {
+router.get("/posts/:id", async function (req, res, next) {
   const { id } = req.params;
+  let postId;
 
-  const postId = new ObjectId(id);
+  try {
+    postId = new ObjectId(id);
+  } catch (error) {
+    return res.status(404).render("404");
+    // next(error);
+  }
 
   const post = await db.getDb().collection("posts").findOne({ _id: postId });
 
