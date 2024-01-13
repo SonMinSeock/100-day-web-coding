@@ -30,10 +30,16 @@ async function fetchCommentsForPost(event) {
   //   });
   const responseData = await response.json();
 
-  const commentListElement = createCommentsList(responseData);
+  if (responseData && responseData.length > 0) {
+    const commentListElement = createCommentsList(responseData);
 
-  commentsSectionElement.innerHTML = ``;
-  commentsSectionElement.appendChild(commentListElement);
+    commentsSectionElement.innerHTML = ``;
+    commentsSectionElement.appendChild(commentListElement);
+  } else {
+    commentsSectionElement.firstElementChild.textContent = `
+      We could not find any comments. Mabe add one?
+    `;
+  }
 }
 
 async function saveComment(event) {
@@ -56,7 +62,8 @@ async function saveComment(event) {
     },
   });
   const responseData = await res.json();
-  console.log(responseData);
+
+  await fetchCommentsForPost();
 }
 
 loadCommentsBtnElement.addEventListener("click", fetchCommentsForPost);
