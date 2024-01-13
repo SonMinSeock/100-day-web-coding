@@ -37,7 +37,7 @@ async function fetchCommentsForPost(event) {
     commentsSectionElement.appendChild(commentListElement);
   } else {
     commentsSectionElement.firstElementChild.textContent = `
-      We could not find any comments. Mabe add one?
+    해당 포스트의 댓글 없습니다.
     `;
   }
 }
