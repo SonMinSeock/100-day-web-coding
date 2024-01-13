@@ -24,21 +24,31 @@ function createCommentsList(comments) {
 async function fetchCommentsForPost(event) {
   //const postId = event.target.dataset.postid;
   const postId = loadCommentsBtnElement.dataset.postid;
-  const response = await fetch(`/posts/${postId}/comments`);
-  //   const response = await fetch(`/posts/${postId}/comments`, {
-  //     method: "GET"
-  //   });
-  const responseData = await response.json();
+  try {
+    const response = await fetch(`/posts/${postId}/comments`);
+    //   const response = await fetch(`/posts/${postId}/comments`, {
+    //     method: "GET"
+    //   });
 
-  if (responseData && responseData.length > 0) {
-    const commentListElement = createCommentsList(responseData);
+    if (!response.ok) {
+      alert("Fetching comments failed!");
+      return;
+    }
 
-    commentsSectionElement.innerHTML = ``;
-    commentsSectionElement.appendChild(commentListElement);
-  } else {
-    commentsSectionElement.firstElementChild.textContent = `
-    해당 포스트의 댓글 없습니다.
-    `;
+    const responseData = await response.json();
+
+    if (responseData && responseData.length > 0) {
+      const commentListElement = createCommentsList(responseData);
+
+      commentsSectionElement.innerHTML = ``;
+      commentsSectionElement.appendChild(commentListElement);
+    } else {
+      commentsSectionElement.firstElementChild.textContent = `
+      해당 포스트의 댓글 없습니다.
+      `;
+    }
+  } catch (error) {
+    alert("Getting comments failed!");
   }
 }
 
@@ -54,16 +64,23 @@ async function saveComment(event) {
     text: enteredText,
   };
 
-  const res = await fetch(`/posts/${postId}/comments`, {
-    method: "POST",
-    body: JSON.stringify(comment),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const responseData = await res.json();
-
-  await fetchCommentsForPost();
+  try {
+    const res = await fetch(`/posts/${postId}/comments`, {
+      method: "POST",
+      body: JSON.stringify(comment),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const responseData = await res.json();
+      await fetchCommentsForPost();
+    } else {
+      alert("Could not send comment!");
+    }
+  } catch (error) {
+    alert("Could not send request - maybe try again later!");
+  }
 }
 
 loadCommentsBtnElement.addEventListener("click", fetchCommentsForPost);
