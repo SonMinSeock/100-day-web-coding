@@ -75,13 +75,17 @@ router.post("/login", async function (req, res) {
   }
 
   req.session.user = { id: exitingUser._id, email: exitingUser.email };
-  res.session.isAuthenticated = true;
+  req.session.isAuthenticated = true;
   req.session.save(function () {
     res.redirect("/admin");
   });
 });
 
 router.get("/admin", function (req, res) {
+  if (!req.session.isAuthenticated) {
+    // if (!req.session.user)
+    return res.status(401).render("401");
+  }
   res.render("admin");
 });
 
