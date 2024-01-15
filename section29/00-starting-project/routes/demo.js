@@ -60,22 +60,25 @@ router.post("/login", async function (req, res) {
   const enteredEmail = userData.email;
   const enteredPassword = userData.password;
 
-  const exitingEmail = await db.getDb().collection("users").findOne({ email: enteredEmail });
+  const exitingUser = await db.getDb().collection("users").findOne({ email: enteredEmail });
 
-  if (!exitingEmail) {
+  if (!exitingUser) {
     console.log("Could not log in!");
     return res.redirect("/login");
   }
 
-  const passwordsAreEqual = await bcrypt.compare(enteredPassword, exitingEmail.password);
+  const passwordsAreEqual = await bcrypt.compare(enteredPassword, exitingUser.password);
 
   if (!passwordsAreEqual) {
     console.log("Could not log in - passwords are not equal!");
     return res.redirect("/login");
   }
 
-  console.log("User is authenticated!");
-  res.redirect("/admin");
+  req.session.user = { id: exitingUser._id, email: exitingUser.email };
+  res.session.isAuthenticated = true;
+  req.session.save(function () {
+    res.redirect("/admin");
+  });
 });
 
 router.get("/admin", function (req, res) {
