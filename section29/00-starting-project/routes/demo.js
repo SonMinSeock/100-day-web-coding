@@ -28,7 +28,16 @@ router.get("/signup", function (req, res) {
 });
 
 router.get("/login", function (req, res) {
-  res.render("login");
+  let sessionInputData = req.session.inputData;
+
+  if (!sessionInputData) {
+    sessionInputData = {
+      hasError: false,
+      email: "",
+      password: "",
+    };
+  }
+  res.render("login", { inputData: sessionInputData });
 });
 
 router.post("/signup", async function (req, res) {
@@ -65,8 +74,19 @@ router.post("/signup", async function (req, res) {
   const exitingEmail = await db.getDb().collection("users").findOne({ email: enteredEmail });
 
   if (exitingEmail) {
-    console.log("exiting email!");
-    return res.redirect("/signup");
+    req.session.inputData = {
+      hasError: true,
+      message: "User exists already!",
+      email: enteredEmail,
+      confirmEmail: confirmEmail,
+      password: enteredPassword,
+    };
+
+    req.session.save(function () {
+      console.log("exiting email!");
+      res.redirect("/signup");
+    });
+    return;
   }
 
   const hashedPassword = await bcrypt.hash(enteredPassword, 12);
@@ -90,14 +110,32 @@ router.post("/login", async function (req, res) {
 
   if (!exitingUser) {
     console.log("Could not log in!");
-    return res.redirect("/login");
+    req.session.inputData = {
+      hasError: true,
+      message: "Could not log in - please check your credentials!",
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+    req.session.save(function () {
+      res.redirect("/login");
+    });
+    return;
   }
 
   const passwordsAreEqual = await bcrypt.compare(enteredPassword, exitingUser.password);
 
   if (!passwordsAreEqual) {
     console.log("Could not log in - passwords are not equal!");
-    return res.redirect("/login");
+    req.session.inputData = {
+      hasError: true,
+      message: "Could not log in - please check your credentials!",
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+    req.session.save(function () {
+      res.redirect("/login");
+    });
+    return;
   }
 
   req.session.user = { id: exitingUser._id, email: exitingUser.email };
