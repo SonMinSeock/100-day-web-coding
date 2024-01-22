@@ -4,9 +4,13 @@ const Post = require("../models/post");
 
 const blogControllers = require("../controllers/post-controllers");
 
+const guardRoute = require("../minddlewares/auth-protection-middleware");
+
 const router = express.Router();
 
 router.get("/", blogControllers.getHome);
+
+router.use(guardRoute);
 
 router.get("/admin", blogControllers.getAdmin);
 
