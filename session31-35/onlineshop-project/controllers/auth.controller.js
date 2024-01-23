@@ -1,9 +1,9 @@
 function getSignup(req, res) {
-  return res.send("<h1>Signup</h1>");
+  return res.render("customer/auth/signup");
 }
 
 function getLogin(req, res) {
-  return res.send("<h1>Login</h1>");
+  return res.render("customer/auth/login");
 }
 
 module.exports = {
