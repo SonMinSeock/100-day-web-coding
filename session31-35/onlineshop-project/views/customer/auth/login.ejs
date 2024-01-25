@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <%- include("../includes/head-default", { pageTitle: "로그인" }) %>
+    <%- include("../../shared/includes/head-default", { pageTitle: "로그인" }) %>
     <link rel="stylesheet" href="/styles/auth.css" />
     <link rel="stylesheet" href="/styles/forms.css" />
   </head>
   <body>
-    <head>
-      <%- include("../includes/header") %>
-    </head>
+    <%- include("../../shared/includes/header") %>
     <main>
       <h1>로그인</h1>
       <form action="/signup" method="POST">

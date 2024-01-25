@@ -4,6 +4,7 @@ const csrf = require("csurf");
 const authRouter = require("./routes/auth.routes");
 const db = require("./data/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
+const errorHandleMinddleware = require("./middlewares/error-handler");
 
 const PORT = 3000;
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
 app.use(authRouter);
+app.use(errorHandleMinddleware);
 
 db.connectToDatabase()
   .then(function () {
