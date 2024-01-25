@@ -1,7 +1,9 @@
 const express = require("express");
-const authRouter = require("./routes/auth.routes");
 const path = require("path");
+const csrf = require("csurf");
+const authRouter = require("./routes/auth.routes");
 const db = require("./data/database");
+const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 
 const PORT = 3000;
 
@@ -12,6 +14,8 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+app.use(csrf());
+app.use(addCsrfTokenMiddleware);
 app.use(authRouter);
 
 db.connectToDatabase()
