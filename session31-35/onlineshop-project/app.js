@@ -8,6 +8,7 @@ const baseRouter = require("./routes/base.routes");
 const db = require("./data/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandleMinddleware = require("./middlewares/error-handler");
+const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const createSessionConfig = require("./config/session");
 
 const PORT = 3000;
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(expressSession(sessionConfig));
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
+app.use(checkAuthStatusMiddleware);
 app.use(baseRouter);
 app.use(authRouter);
 app.use(productsRouter);
