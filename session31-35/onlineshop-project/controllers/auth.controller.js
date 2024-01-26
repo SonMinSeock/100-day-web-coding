@@ -46,9 +46,15 @@ async function login(req, res) {
   });
 }
 
+async function logout(req, res) {
+  authUtil.destoryUserAuthSession(req);
+  res.redirect("/login");
+}
+
 module.exports = {
   getSignup,
   getLogin,
   signup,
   login,
+  logout,
 };
