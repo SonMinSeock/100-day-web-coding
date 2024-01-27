@@ -4,7 +4,21 @@ const validation = require("../util/validation");
 const sessionFlash = require("../util/session-flash");
 
 function getSignup(req, res) {
-  return res.render("customer/auth/signup");
+  let sessionData = sessionFlash.getSessionData(req);
+
+  if (!sessionData) {
+    sessionData = {
+      email: "",
+      confirmEmail: "",
+      password: "",
+      fullname: "",
+      street: "",
+      postal: "",
+      city: "",
+    };
+  }
+
+  return res.render("customer/auth/signup", { inputData: sessionData });
 }
 
 async function signup(req, res, next) {
@@ -13,7 +27,7 @@ async function signup(req, res, next) {
   } = req;
   const confirmEmail = req.body["confirm-email"];
 
-  const enteredData = { email, password, fullname, street, postal, city };
+  const enteredData = { email, confirmEmail, password, fullname, street, postal, city };
 
   if (
     !validation.userDetailValidation(email, password, fullname, street, postal, city) ||
@@ -36,9 +50,9 @@ async function signup(req, res, next) {
   try {
     const user = new User(email, password, fullname, street, postal, city);
 
-    const existingAlreadyEmail = user.existsAlready();
+    const existingAlreadyEmail = await user.existsAlready();
 
-    if (!existingAlreadyEmail) {
+    if (existingAlreadyEmail) {
       sessionFlash.flashDataSession(
         req,
         {
@@ -61,7 +75,16 @@ async function signup(req, res, next) {
 }
 
 function getLogin(req, res) {
-  return res.render("customer/auth/login");
+  let sessionData = sessionFlash.getSessionData(req);
+
+  if (!sessionData) {
+    sessionData = {
+      email: "",
+      password: "",
+    };
+  }
+
+  return res.render("customer/auth/login", { inputData: sessionData });
 }
 
 async function login(req, res) {
