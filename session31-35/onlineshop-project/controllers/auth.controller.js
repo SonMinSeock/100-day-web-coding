@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const authUtil = require("../util/authentication");
 const validation = require("../util/validation");
+const sessionFlash = require("../util/session-flash");
 
 function getSignup(req, res) {
   return res.render("customer/auth/signup");
@@ -12,11 +13,23 @@ async function signup(req, res, next) {
   } = req;
   const confirmEmail = req.body["confirm-email"];
 
+  const enteredData = { email, password, fullname, street, postal, city };
+
   if (
     !validation.userDetailValidation(email, password, fullname, street, postal, city) ||
     !validation.emailIsConfirmed(email, confirmEmail)
   ) {
-    res.redirect("/signup");
+    sessionFlash.flashDataSession(
+      req,
+      {
+        errorMessage:
+          "Please check your input. Password must be at least 6 characters long, postal code must be 5 characters long.",
+        ...enteredData,
+      },
+      function () {
+        res.redirect("/signup");
+      }
+    );
     return;
   }
 
@@ -26,7 +39,17 @@ async function signup(req, res, next) {
     const existingAlreadyEmail = user.existsAlready();
 
     if (!existingAlreadyEmail) {
-      return res.redirect("/signup");
+      sessionFlash.flashDataSession(
+        req,
+        {
+          errorMessage: "이미 계정 존재합니다.",
+          ...enteredData,
+        },
+        function () {
+          res.redirect("/signup");
+        }
+      );
+      return;
     }
     await user.signup();
   } catch (error) {
@@ -52,15 +75,25 @@ async function login(req, res) {
     return;
   }
 
+  const sessionErrorData = {
+    errorMessage: "해당 계정 혹은 패스워드 일치하지 않습니다.",
+    email: user.email,
+    password: user.password,
+  };
+
   if (!exitingUser) {
-    res.redirect("/login");
+    sessionFlash.flashDataSession(req, sessionErrorData, function () {
+      res.redirect("/login");
+    });
     return;
   }
 
   const passwordIsCorrect = await user.hasMatchingPssword(exitingUser.password);
 
   if (!passwordIsCorrect) {
-    res.redirect("/login");
+    sessionFlash.flashDataSession(req, sessionErrorData, function () {
+      res.redirect("/login");
+    });
     return;
   }
 
