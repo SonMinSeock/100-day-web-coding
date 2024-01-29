@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include("../../shared/includes/head-default", { pageTitle: "온라인 쇼핑몰 | 상품 업로드 | 관리자" }) %>
+    <link rel="stylesheet" href="/styles/forms.css" />
+  </head>
+  <body>
+    <%- include("../../shared/includes/header") %>
+    <main>
+      <h1>상품 업로드</h1>
+      <form action="/admin/products/new" method="POST">
+        <p>
+          <label for="title">상품 제목</label>
+          <input type="text" id="title" name="title" required />
+        </p>
+        <p>
+          <label for="image">상품 이미지</label>
+          <input type="file" id="image" name="image" accept="image/png,image/jpg" />
+        </p>
+        <p>
+          <label for="summary">상품 정보</label>
+          <input type="text" id="summary" name="summary" required maxlength="250" />
+        </p>
+        <p>
+          <label for="price">상품 가격</label>
+          <input type="number" id="price" name="price" min="1000" step="500" required />
+        </p>
+        <p>
+          <label for="description">상품 내용</label>
+          <textarea id="description" name="description" rows="7" required></textarea>
+        </p>
+        <p>
+          <button type="reset" class="btn btn-alt">새로 작성</button>
+          <button class="btn">제출</button>
+        </p>
+      </form>
+    </main>
+  </body>
+</html>
