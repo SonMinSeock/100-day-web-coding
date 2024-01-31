@@ -14,7 +14,11 @@
         </p>
       </section>
       <section>
-        <p>상품 리스트</p>
+        <ul>
+          <% for (const product of products) { %>
+          <li><%- include("includes/product-item", { product: product }) %></li>
+          <% } %>
+        </ul>
       </section>
     </main>
   </body>
