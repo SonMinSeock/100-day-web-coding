@@ -8,7 +8,7 @@
     <%- include("../../shared/includes/header") %>
     <main>
       <h1>상품 업로드</h1>
-      <form action="/admin/products/new" method="POST">
+      <form action="/admin/products/new?_csrf=<%=locals.csrfToken%>" method="POST" enctype="multipart/form-data">
         <p>
           <label for="title">상품 제목</label>
           <input type="text" id="title" name="title" required />
