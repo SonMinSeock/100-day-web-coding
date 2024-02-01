@@ -45,7 +45,26 @@ async function getUpdateProduct(req, res, next) {
   }
 }
 
-function upldateProduct() {}
+async function upldateProduct(req, res, next) {
+  const product = new Product({
+    ...req.body,
+    _id: req.params.id,
+  });
+
+  // 이미지 선택했으면 이미지 수정한다는 의미이다.
+  if (req.file) {
+    product.replaceImage(req.file.filename);
+  }
+
+  try {
+    await product.save();
+  } catch (error) {
+    next(error);
+    return;
+  }
+
+  res.redirect("/admin/products");
+}
 
 module.exports = {
   getProducts,

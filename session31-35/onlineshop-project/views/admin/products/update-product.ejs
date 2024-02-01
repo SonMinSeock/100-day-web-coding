@@ -8,7 +8,8 @@
     <%- include("../../shared/includes/header") %>
     <main>
       <h1>상품 수정</h1>
-      <%- include("./includes/product-form", { submitPath: "/admin/products/" + product.id, product: product }) %>
+      <%- include("./includes/product-form", { submitPath: "/admin/products/" + product.id, product: product,
+      imageRequired: false }) %>
     </main>
   </body>
 </html>

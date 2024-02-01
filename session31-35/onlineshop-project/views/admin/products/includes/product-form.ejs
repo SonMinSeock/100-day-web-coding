@@ -5,7 +5,11 @@
   </p>
   <p>
     <label for="image">상품 이미지</label>
+    <% if (imageRequired) { %>
+    <input type="file" id="image" name="image" accept="image/png,image/jpg" required />
+    <% } else { %>
     <input type="file" id="image" name="image" accept="image/png,image/jpg" />
+    <% } %>
   </p>
   <p>
     <label for="summary">상품 정보</label>
@@ -17,7 +21,7 @@
   </p>
   <p>
     <label for="description">상품 내용</label>
-    <textarea id="description" name="description"  rows="7" required><%=product.description%></textarea>
+    <textarea id="description" name="description" rows="7" required><%=product.description%></textarea>
   </p>
   <p>
     <button type="reset" class="btn btn-alt">새로 작성</button>

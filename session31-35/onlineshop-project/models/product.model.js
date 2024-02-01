@@ -8,8 +8,7 @@ class Product {
     this.price = +productData.price;
     this.description = productData.description;
     this.image = productData.image; // 이미지 파일 이름.
-    this.imagePath = `product-data/image/${productData.image}`;
-    this.imageUrl = `/prodcuts/assets/images/${productData.image}`;
+    this.updateImageData();
     if (productData._id) {
       this.id = productData._id.toString();
     }
@@ -30,7 +29,7 @@ class Product {
       error.code = 404;
       throw error;
     }
-    return product;
+    return new Product(product);
   }
 
   static async findAll() {
@@ -38,6 +37,11 @@ class Product {
     return products.map(function (productDocument) {
       return new Product(productDocument);
     });
+  }
+
+  updateImageData() {
+    this.imagePath = `product-data/image/${this.image}`;
+    this.imageUrl = `/prodcuts/assets/images/${this.image}`;
   }
 
   async save() {
@@ -48,7 +52,23 @@ class Product {
       description: this.description,
       image: this.image,
     };
-    await db.getDb().collection("products").insertOne(productData);
+
+    if (this.id) {
+      // 수정 작업!
+      const productId = new mongodb.ObjectId(this.id); // String -> ObejctId 변환
+      if (!this.image) {
+        delete productData.image;
+      }
+      await db.getDb().collection("products").updateOne({ _id: productId }, { $set: productData });
+    } else {
+      await db.getDb().collection("products").insertOne(productData);
+    }
+  }
+
+  replaceImage(newImage) {
+    // newImage는 이미지 파일 이름이다.
+    this.image = newImage;
+    this.updateImageData();
   }
 }
 
