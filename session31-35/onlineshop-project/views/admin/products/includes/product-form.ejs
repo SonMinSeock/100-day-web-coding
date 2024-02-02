@@ -3,14 +3,17 @@
     <label for="title">상품 제목</label>
     <input type="text" id="title" name="title" value="<%=product.title%>" required />
   </p>
-  <p>
-    <label for="image">상품 이미지</label>
-    <% if (imageRequired) { %>
-    <input type="file" id="image" name="image" accept="image/png,image/jpg" required />
-    <% } else { %>
-    <input type="file" id="image" name="image" accept="image/png,image/jpg" />
-    <% } %>
-  </p>
+  <div id="image-upload-control">
+    <p>
+      <label for="image">상품 이미지</label>
+      <% if (imageRequired) { %>
+      <input type="file" id="image" name="image" accept="image/png,image/jpg" required />
+      <% } else { %>
+      <input type="file" id="image" name="image" accept="image/png,image/jpg" />
+      <% } %>
+    </p>
+    <img src="" alt="업로드 할 상품 이미지 미리보기" />
+  </div>
   <p>
     <label for="summary">상품 정보</label>
     <input type="text" id="summary" name="summary" value="<%=product.summary%>" required maxlength="250" />
