@@ -11,6 +11,7 @@ const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandleMinddleware = require("./middlewares/error-handler");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const createSessionConfig = require("./config/session");
+const protectRoutesMiddleware = require("./middlewares/protect-routes");
 
 const PORT = 3000;
 const sessionConfig = createSessionConfig();
@@ -30,6 +31,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRouter);
 app.use(authRouter);
 app.use(productsRouter);
+app.use(protectRoutesMiddleware);
 app.use("/admin", adminRouter);
 app.use(errorHandleMinddleware);
 
