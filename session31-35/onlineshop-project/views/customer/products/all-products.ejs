@@ -2,12 +2,34 @@
 <html lang="ko">
   <head>
     <%- include("../../shared/includes/head-default", { pageTitle: "온라인 쇼핑몰 | 상품목록" }) %>
+    <link rel="stylesheet" href="/styles/products.css" />
   </head>
   <body>
     <%- include("../../shared/includes/header") %>
     <main>
       <h1>등록된 상품들</h1>
-      <p>상품 리스트</p>
+      <ul id="products-grid">
+        <% for (const product of products) { %>
+        <li>
+          <article class="product-item">
+            <img src="<%= product.imageUrl %>" alt="업로드한 상품 이미지" />
+            <div class="product-item-content">
+              <h2><%=product.title%></h2>
+              <div class="product-item-actions">
+                <% if (locals.isAdmin) {%>
+                <a class="btn btn-alt" href="/admin/products/<%=product.id%>">상세보기 & 수정</a>
+                <button class="btn btn-alt" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">
+                  삭제
+                </button>
+                <% } else {%>
+                <a class="btn btn-alt" href="/products/<%=product.id%>">상세보기</a>
+                <% } %>
+              </div>
+            </div>
+          </article>
+        </li>
+        <% } %>
+      </ul>
     </main>
   </body>
 </html>
