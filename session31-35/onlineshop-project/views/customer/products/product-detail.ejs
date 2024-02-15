@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include("../../shared/includes/head-default", { pageTitle: "온라인 쇼핑몰 | 상품 상세보기" }) %>
+    <link rel="stylesheet" href="/styles/products.css" />
+  </head>
+  <body>
+    <%- include("../../shared/includes/header") %>
+    <main id="product-details">
+      <header>
+        <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
+        <div id="product-info">
+          <h1><%= product.title %></h1>
+          <p><%= product.price %>원</p>
+          <button>장바구니 담기</button>
+        </div>
+      </header>
+      <p id="product-description"><%= product.description %></p>
+    </main>
+  </body>
+</html>
