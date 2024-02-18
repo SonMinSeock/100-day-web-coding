@@ -12,6 +12,7 @@ const errorHandleMinddleware = require("./middlewares/error-handler");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const createSessionConfig = require("./config/session");
 const protectRoutesMiddleware = require("./middlewares/protect-routes");
+const cartMiddeleware = require("./middlewares/cart");
 
 const PORT = 3000;
 const sessionConfig = createSessionConfig();
@@ -26,6 +27,7 @@ app.use("/prodcuts/assets", express.static("product-data"));
 app.use(express.urlencoded({ extended: false }));
 app.use(expressSession(sessionConfig));
 app.use(csrf());
+app.use(cartMiddeleware);
 app.use(addCsrfTokenMiddleware);
 app.use(checkAuthStatusMiddleware);
 app.use(baseRouter);
