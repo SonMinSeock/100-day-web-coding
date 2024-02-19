@@ -8,7 +8,7 @@ function initializeCart(req, res, next) {
   } else {
     const sessionCart = req.session.cart;
 
-    cart = new Cart(req.session.cart.items, sessionCart.totalQunatity, sessionCart.totalPrice);
+    cart = new Cart(sessionCart.items, sessionCart.totalQunatity, sessionCart.totalPrice);
   }
 
   res.locals.cart = cart;
