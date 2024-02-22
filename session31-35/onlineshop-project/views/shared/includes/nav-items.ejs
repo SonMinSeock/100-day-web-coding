@@ -2,7 +2,7 @@
   <% if (!locals.isAdmin) {%>
   <li><a href="/">Shop</a></li>
   <li>
-    <a href="/cart">장바구니 <span class="badge"><%= locals.cart.totalQunatity %></span></a>
+    <a href="/cart">장바구니 <span class="badge"><%= locals.cart.totalQuantity %></span></a>
   </li>
   <% } %> <% if (locals.isAuth && !locals.isAdmin) {%>
   <li><a href="/orders">주문내역</a></li>

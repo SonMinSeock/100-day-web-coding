@@ -10,7 +10,7 @@ class Order {
     this.status = status;
     this.date = new Date(date);
     if (this.date) {
-      this.formattedDate = this.date.toLocaleDateString("en-US", {
+      this.formattedDate = this.date.toLocaleDateString("ko-KR", {
         weekday: "short",
         day: "numeric",
         month: "long",
