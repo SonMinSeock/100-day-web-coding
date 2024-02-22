@@ -1,14 +1,16 @@
-const db = require("../data/database");
 const mongodb = require("mongodb");
 
+const db = require("../data/database");
+
 class Order {
-  // status => pending, fulfilled, cancelled
+  // Status => pending, fulfilled, cancelled
   constructor(cart, userData, status = "pending", date, orderId) {
     this.productData = cart;
     this.userData = userData;
-    (this.status = status), (this.date = new Date(date));
+    this.status = status;
+    this.date = new Date(date);
     if (this.date) {
-      this.dateFormattedDate = this.date.toLocaleDateString("ko-KR", {
+      this.formattedDate = this.date.toLocaleDateString("en-US", {
         weekday: "short",
         day: "numeric",
         month: "long",
@@ -27,7 +29,7 @@ class Order {
   }
 
   static async findAll() {
-    const orders = await db.getDb().collection("orders").find().toArray();
+    const orders = await db.getDb().collection("orders").find().sort({ _id: -1 }).toArray();
 
     return this.transformOrderDocuments(orders);
   }
@@ -51,14 +53,12 @@ class Order {
 
   save() {
     if (this.id) {
-      // 기존 주문에 업데이트 ...
       const orderId = new mongodb.ObjectId(this.id);
       return db
         .getDb()
         .collection("orders")
         .updateOne({ _id: orderId }, { $set: { status: this.status } });
     } else {
-      // 새로 만들어서 저장...
       const orderDocument = {
         userData: this.userData,
         productData: this.productData,

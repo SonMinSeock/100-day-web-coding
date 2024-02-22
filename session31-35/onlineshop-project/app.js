@@ -15,6 +15,8 @@ const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const createSessionConfig = require("./config/session");
 const protectRoutesMiddleware = require("./middlewares/protect-routes");
 const cartMiddeleware = require("./middlewares/cart");
+const updateCartPricesMiddleware = require("./middlewares/update-cart-prices");
+const notFoundMiddleware = require("./middlewares/not-found");
 
 const PORT = 3000;
 const sessionConfig = createSessionConfig();
@@ -31,15 +33,16 @@ app.use(express.json());
 app.use(expressSession(sessionConfig));
 app.use(csrf());
 app.use(cartMiddeleware);
+app.use(updateCartPricesMiddleware);
 app.use(addCsrfTokenMiddleware);
 app.use(checkAuthStatusMiddleware);
 app.use(baseRouter);
 app.use(authRouter);
 app.use(productsRouter);
 app.use("/cart", cartRouter);
-app.use(protectRoutesMiddleware);
-app.use("/orders", orderRouter);
-app.use("/admin", adminRouter);
+app.use("/orders", protectRoutesMiddleware, orderRouter);
+app.use("/admin", protectRoutesMiddleware, adminRouter);
+app.use(notFoundMiddleware);
 app.use(errorHandleMinddleware);
 
 db.connectToDatabase()
