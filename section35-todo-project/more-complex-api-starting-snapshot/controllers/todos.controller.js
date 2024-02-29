@@ -32,9 +32,34 @@ async function addTodo(req, res, next) {
   res.json({ message: "Added todo successfully!", createdTodo: todo });
 }
 
-function updateTodo(req, res, next) {}
+async function updateTodo(req, res, next) {
+  const todoId = req.params.id;
+  const newText = req.body.text;
 
-function deleteTodo(req, res, next) {}
+  const todo = new Todo(newText, todoId);
+
+  try {
+    await todo.save();
+  } catch (error) {
+    next(error);
+  }
+
+  res.json({ message: "Todo Updated Sussess!", updatedTodo: todo });
+}
+
+async function deleteTodo(req, res, next) {
+  const todoId = req.params.id;
+
+  const todo = new Todo(null, todoId);
+
+  try {
+    await todo.delete();
+  } catch (error) {
+    next(error);
+  }
+
+  res.json({ message: "Todo Deleted Success!" });
+}
 
 module.exports = {
   getAllTodos,
